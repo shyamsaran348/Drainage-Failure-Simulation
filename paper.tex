@@ -73,42 +73,45 @@ V = \frac{1}{n} R_h^{2/3} S^{1/2}
 \end{equation}
 where $n$ is the roughness coefficient scaled for concrete $(n=0.013)$. Slope $S$ is calculated dynamically from the DEM: $S = (z_u - z_v)/L_{uv}$. The capacity $C_{uv}$ is then defined as $V \cdot A_{pipe}$.
 
-\subsection{The 8-Rule Grammar Engine}
-The engine applies the following suite of rules sequentially at each time step $\Delta t$:
+\subsection{Formal Rule Specification}
+To ensure methodological rigor, we formalize the 8-rule engine using set-theoretic production notation.
 
-\subsubsection{Rule 1: Rainfall Inflow ($R_{inflow}$)}
-This rule handles the stochastic entry of water. For each junction node $v$:
-$L_v \to L_v + (I(t) \cdot A_c \cdot \Delta t)$.
-Catchment areas $A_c$ are randomized per iteration ($\mu=5000, \sigma=500$) to provide statistical robustness.
+\subsubsection{Inflow Rule ($R_1$)}
+Let $\mathcal{A}_c(v)$ be the catchment area of node $v$. The updated water level $L_v'$ at time $t+\Delta t$ is:
+\begin{equation}
+L_v' = L_v + \int_{t}^{t+\Delta t} I(\tau) \mathcal{A}_c(v) d\tau
+\end{equation}
 
-\subsubsection{Rule 2: Gravity Flow Distribution ($R_{flow}$)}
-This rule distributes node water levels down the topological gradient. Flow is shared among outgoing edges proportional to their Manning capacities.
+\subsubsection{Manning-Limited Gravity Flow ($R_2$)}
+For an edge $e_{uv}$ with slope $S_{uv}$, the transfer volume $\Delta V_{uv}$ is bounded by the Manning capacity $Q_{cap}(e_{uv})$:
+\begin{equation}
+\Delta V_{uv} = \min(L_u \cdot \alpha, Q_{cap}(e_{uv}) \Delta t)
+\end{equation}
 
-\subsubsection{Rule 3: Stress-Based Overload ($R_{overload}$)}
-LHS: $\exists e \in E : status(e) = \text{'active'} \land q_e > C_e$.
-RHS: $status(e) \gets \text{'overloaded'}$.
+\subsubsection{Sequential Blockage Production ($R_{3,4}$)}
+The transformation from an active to a blocked state is a discrete state transition triggered by hydraulic stress:
+\begin{equation}
+\delta(status(e), t) = 
+\begin{cases} 
+\text{'block'}, & \text{if } \int_{t-\tau}^{t} (q_e - C_e) dt > \Theta \\
+\text{'active'}, & \text{otherwise}
+\end{cases}
+\end{equation}
+where $\Theta$ is the cumulative stress threshold.
 
-\subsubsection{Rule 4: Temporal Blockage Formation ($R_{block}$)}
-LHS: $status(e) = \text{'overloaded'}$ for $T \ge \tau$.
-RHS: $status(e) \gets \text{'blocked'}$.
-This models the physical reality that debris accumulation is a time-dependent process under high-shear stress.
+\subsubsection{Topological Rerouting Rule ($R_5$)}
+If $status(e_{uv}) = \text{'blocked'}$, the flow vector $\vec{Q}_u$ is redistributed across the remaining active out-degree set $\mathcal{E}_{out}(u) \setminus \{e_{uv}\}$:
+\begin{equation}
+\vec{Q}_u' = \sum_{e \in \mathcal{E}_{out}(u) \setminus \{e_{uv}\}} W_e \cdot Q_{total}(u)
+\end{equation}
+where $W_e$ is the capacity-weighted distribution factor.
 
-\subsubsection{Rule 5: Dynamic Flow Rerouting ($R_{reroute}$)}
-LHS: $\exists e_{uv} : status(e_{uv}) = \text{'blocked'} \land \exists e_{uw} : status(e_{uw}) = \text{'active'}$.
-RHS: $q_{uv} \to q_{uw}$.
-This simulates the surcharging effect where water finds alternate paths through manhole junctions when the primary route is obstructed.
-
-\subsubsection{Rule 6: Node Inundation ($R_{flood}$)}
-LHS: $L_v > C_v$.
-RHS: $type(v) \gets \text{'flood'}$.
-
-\subsubsection{Rule 7: Upstream Pressure Cascade ($R_{pressure}$)}
-LHS: $status(e_{vw}) = \text{'blocked'}$.
-RHS: $\forall e_{uv} : C_{uv} \gets 0.8 \cdot C_{uv}$.
-By reducing upstream capacity, we model the hydraulic jump and air-binding that occurs when a downstream pipe stops accepting flow.
-
-\subsubsection{Rule 8: System Recovery ($R_{recess}$)}
-Once rainfall intensity drops, the system gradually removes water through outlets, transitioning nodes from 'flood' back to 'junction'.
+\subsubsection{Back-Pressure Cascade ($R_7$)}
+The physical impact of a downstream blockage on upstream efficiency is modeled via an attenuation factor $\lambda$:
+\begin{equation}
+C_{upstream}' = \lambda \cdot C_{upstream}, \quad \lambda \in [0.7, 0.9]
+\end{equation}
+This accounts for the hydraulic transition from gravity flow to surcharged pressure flow.
 
 \section{Case Study: Velachery, Chennai}
 \subsection{Geospatial Context}
