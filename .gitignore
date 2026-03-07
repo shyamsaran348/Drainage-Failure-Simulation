@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+.pytest_cache/
+
+# Results & Data (to keep repo clean, we store metadata but not large generated binaries if multiple)
+results/figures/*.png
+results/figures/*.webp
+results/*.json
+results/critical_nodes.json
+
+# Dashboard
+dashboard/node_modules/
+dashboard/dist/
+dashboard/.env
+dashboard/.vscode/
+
+# PDF/LaTeX build files
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.pdf
+*.fdb_latexmk
+*.fls
+
+# OS
+.DS_Store
+Thumbs.db
