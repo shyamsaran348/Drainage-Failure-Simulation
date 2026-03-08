@@ -85,12 +85,12 @@ A graph grammar rule $R$ consists of a Left-Hand Side (LHS) condition and a Righ
 \section{System Architecture and Implementation}
 The developed framework integrates geospatial processing with a bimodal simulation engine. We define two primary metrics to quantify system failure:
 \begin{enumerate}
-    \item \textbf{Cascade Depth ($\Lambda$):} The maximum length of the failure chain originating from a primary blockage $v_{source}$, defined as:
+    \item \textbf{Cascade Depth ($\Lambda$):} The maximum length of the failure chain originating from a primary blockage $v_{source}$ at time $t$, defined as:
     \begin{equation}
-    \Lambda = \max_{v \in V} d(v_{source}, v)
+    \Lambda = \max_{v \in V} d_{G_t}(v_{source}, v)
     \end{equation}
-    where $d(\cdot)$ denotes the graph distance in the drainage topology.
-    \item \textbf{Failure Velocity ($v_{fail}$):} The rate of new blockage formation over time, $v_{fail} = \Delta E_{blocked} / \Delta t$.
+    where $d_{G_t}(\cdot)$ denotes the graph distance in the dynamic network state $G_t$.
+    \item \textbf{Failure Velocity ($v_{fail}$):} The rate of new blockage formation over time, $v_{fail} = \Delta E_{blocked} / \Delta t$. This metric measures the temporal rate at which structural blockages propagate, capturing the dynamic acceleration of infrastructure collapse under extreme hydraulic stress.
 \end{enumerate}
 
 \subsection{Hydraulic Simulation Core}
@@ -99,6 +99,9 @@ The continuous flow distribution is governed by Manning's equation. To handle th
 Q = \frac{1}{n} A R_h^{2/3} S^{1/2}
 \end{equation}
 where $S$ is the hydraulic gradient derived from the Digital Elevation Model (DEM): $S = (z_{source} - z_{target}) / L$. 
+
+\subsection{Open Research and Reproducibility}
+The full simulation framework, datasets, and high-resolution figures used in this study are available as an open-source repository at: \url{https://github.com/shyamsaran348/Drainage-Failure-Simulation}.
 
 \begin{figure}[htbp]
 \centering
@@ -221,7 +224,7 @@ Network Density & 1.21 & 1.23 & 1.50 & 1.22 & $E/V$ \\
 \label{tab_catchments}
 \end{center}
 \end{table}
-Velachery (depression-zone) and Adyar (riverfront corridor) serve as the primary benchmark catchments. The Mylapore drainage segment represents a small heritage sub-network used as a micro-scale structural comparison to evaluate rules in high-density legacy infrastructure.
+Velachery (depression-zone) and Adyar (riverfront corridor) serve as the primary benchmark catchments. The Mylapore segment represents a localized heritage drainage subnetwork with limited spatial extent. It is included as a micro-scale case to evaluate the behavior of graph grammar rules in constrained legacy infrastructure environments.
 
 \subsection{Experimental Setup}
 We utilized a bimodal simulation suite representing three distinct rainfall hydrographs:
@@ -242,13 +245,20 @@ We defined formal system resilience $R$ as $1 - (N_{flood}/N_{total})$. Using a 
 \label{fig:resilience}
 \end{figure}
 
-Beyond this threshold, the system enters a phase transition where network-wide inundation propagates catastrophically, reducing resilience to below 0.3 within 50 time steps. This relationship is further elucidated by the growth of topological complexity as a function of rainfall intensity (Figure \ref{fig:cascade_intensity}).
+Beyond this threshold, the system enters a phase transition where network-wide inundation propagates catastrophically, reducing resilience to below 0.3 within 50 time steps. This relationship is further elucidated by the growth of topological complexity as a function of rainfall intensity (Figure \ref{fig:cascade_intensity}), while the spatial footprint of this propagation is visualized in Figure \ref{fig:spatial_map}.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.45\textwidth]{plot10_cascade_intensity.png}
 \caption{ Mean Cascade Depth ($\Lambda$) vs. Rainfall Intensity: Demonstrating the non-linear growth of failure propagation complexity ($\mu \pm \sigma$) across 10 Monte Carlo iterations.}
 \label{fig:cascade_intensity}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.45\textwidth]{spatial_failure_propagation.png}
+\caption{ Spatial Failure Propagation (Velachery): Geographical distribution of blocked pipes (red) and triggered flooded nodes (blue) during Scenario C simulation.}
+\label{fig:spatial_map}
 \end{figure}
 
 \subsection{Failure Propagation Velocity ($v_{fail}$)}
@@ -317,7 +327,7 @@ The accuracy of the Velachery case study is subject to the resolution of the Ope
 The discovery of a "Cascade Depth" of 4 nodes and a peak $v_{fail}$ of 0.4 pipes/step has profound implications for urban resilience and emergency response. It suggests that infrastructure systems are not just failing statically—they are "evolving" into failure states. For municipal authorities, this data provides a prioritized desilting list based on a node's topological influence rather than just its visible flow. Furthermore, our findings advocate for the strategic placement of IoT pressure sensors at high-Impact Score junctions (\texttt{80.2103,12.9888}) to provide early-warning signals before a structural phase transition occurs. Future work will investigate the integration of machine learning models to "learn" these graph grammar rules from real-world sensor streams, potentially automating the rule-discovery process for different urban topographies.
 
 \section{Conclusion}
-This paper presented a novel Graph Grammar--based framework for urban drainage failure analysis. By synthesizing Manning's hydraulics with formal structural productions, we successfully captured the bimodal nature of urban flooding—where fluid dynamics and topological transformations exist in a coupled feedback loop. The case study in Velachery, Chennai, demonstrates that a physics-aware grammar approach significantly out-performs traditional static hydraulic models, providing a scalable and mathematically rigorous tool for infrastructure resilience planning. As urban centers continue to face extreme weather events, such hybrid models will be essential for creating "Smart" and resilient cities of the future.
+This paper presented a novel Graph Grammar--based framework for urban drainage failure analysis. By synthesizing Manning's hydraulics with formal structural productions, we successfully captured the bimodal nature of urban flooding—where fluid dynamics and topological transformations exist in a coupled feedback loop. The case study in Velachery, Chennai, demonstrates that a physics-aware grammar approach significantly out-performs traditional static hydraulic models, providing a scalable and mathematically rigorous tool for infrastructure resilience planning. These results suggest that urban drainage systems exhibit characteristics of complex adaptive networks, where local structural failures can trigger global phase transitions. 
 
 \begin{thebibliography}{00}
 \bibitem{b1} R. J. Manning, ``On the flow of water in open channels and pipes,'' 1891.
@@ -330,6 +340,7 @@ This paper presented a novel Graph Grammar--based framework for urban drainage f
 \bibitem{b8} J. W. Rossman, ``Storm Water Management Model User's Manual Version 5.2,'' US EPA, 2022.
 \bibitem{b9} F. Kong et al., ``Urban flood vulnerability and resilience in China,'' Nature Communications, 2021.
 \bibitem{b10} M. Batty, ``The New Science of Cities,'' MIT Press, 2013.
+\bibitem{b11} V. Rosato et al., ``Modelling cascading failures in critical infrastructures,'' International Journal of Critical Infrastructure Protection, 2008.
 \end{thebibliography}
 
 \end{document}
