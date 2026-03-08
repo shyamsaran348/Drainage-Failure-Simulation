@@ -1,0 +1,24 @@
+{
+  "areas": [
+    {
+      "id": "velachery",
+      "label": "Velachery (South Chennai)",
+      "base_path": "areas/velachery"
+    },
+    {
+      "id": "adyar",
+      "label": "Adyar (Riverfront)",
+      "base_path": "areas/adyar"
+    },
+    {
+      "id": "mylapore",
+      "label": "Mylapore (Heritage District)",
+      "base_path": "areas/mylapore"
+    },
+    {
+      "id": "tnagar",
+      "label": "T. Nagar (Commercial Hub)",
+      "base_path": "areas/tnagar"
+    }
+  ]
+}

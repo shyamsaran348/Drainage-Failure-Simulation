@@ -26,7 +26,7 @@ shyam@example.com}
 \maketitle
 
 \begin{abstract}
-Urban drainage systems are critical infrastructure networks that transport stormwater and wastewater through interconnected pipelines. Failures such as pipe blockages, debris accumulation, and structural collapses can propagate across the drainage network, leading to catastrophic urban flooding. Traditional drainage modeling methods rely heavily on hydraulic simulations, which primarily model water flow but often do not explicitly represent discrete structural network transformations. This research introduces a novel graph grammar--based framework where drainage networks are represented as attributed directed graphs, and structural changes are modeled through formal graph rewrite rules. By integrating Manning's equation for realistic gravity-driven flow with an 8-rule graph grammar engine, we simulate the emergence of cascading failures. Our framework is validated using a real-world case study from Velachery, Chennai, demonstrating its ability to identify critical infrastructure nodes and predict failure chain depths. Results indicate that the graph-grammar approach captures complex rerouting and pressure propagation dynamics that conventional linear models overlook, achieving a 52\% improvement in identifying high-risk inundation points.
+Urban drainage systems are critical infrastructure networks whose resilience is governed by the non-linear propagation of structural failures. This research introduces a novel graph grammar--based framework where drainage networks are represented as attributed directed graphs, and cascading failures are modeled through eight formal production rules. By integrating Manning's hydraulics for gravity-driven flux with a discrete state-transition engine, we simulate the emergence of blockage-induced flooding. Our framework is validated through a comparative study of four distinct Chennai catchments: Velachery (depression-zone), Adyar (riverfront corridor), Mylapore (heritage district), and T. Nagar (commercial hub). Results demonstrate that the graph-grammar approach identifies 42\% more critical failure incidents than static hydraulic models, revealing that network topology and drainage redundancy directly govern the "Cascade Depth" ($\Lambda$) of infrastructure collapse. This bimodal modeling paradigm provides a scalable, mathematically rigorous tool for developing resilient urban digital twins.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -50,9 +50,10 @@ Recent years have seen a surge in machine learning (ML) surrogates for flood pre
 \subsection{Graph-Theoretic and Grammar Approaches}
 The use of Graph Theory in infrastructure resilience primarily focuses on static metrics like Betweenness Centrality \cite{b7}. While useful for identifying structural bottlenecks, these metrics do not account for Manning's hydraulics. Graph Grammars, on the other hand, provide a formal language for topological transformation \cite{b2}. Our proposed framework occupies a unique niche by bridging the gap between structural rewrite rules and hydraulic physics.
 
-\begin{table}[htbp]
+\begin{table*}[t]
 \caption{Comparison of UDN Modeling Methodologies}
 \begin{center}
+\renewcommand{\arraystretch}{1.2}
 \begin{tabular}{|l|c|c|c|c|}
 \hline
 \textbf{Feature} & \textbf{SWMM} & \textbf{AI Surrogates} & \textbf{Graph Centrality} & \textbf{Proposed Framework} \\
@@ -66,7 +67,7 @@ Explainability & High & Low & Moderate & \textit{High} \\
 \end{tabular}
 \label{tab1}
 \end{center}
-\end{table}
+\end{table*}
 
 \section{Theoretic Framework: Graph Grammars for UDN}
 \subsection{Definition of the Attributed Infrastructure Graph}
@@ -82,7 +83,15 @@ We define the drainage network as a 4-tuple $G = (V, E, \Phi, \Psi)$, where:
 A graph grammar rule $R$ consists of a Left-Hand Side (LHS) condition and a Right-Hand Side (RHS) transformation. If a subgraph $g \subset G$ matches the LHS at time $t$, it is replaced by $R(g)$ at time $t+1$. The state of the graph at $t+1$ is $G_{t+1} = G_t \cup \{R(g) \setminus LHS(g)\}$.
 
 \section{System Architecture and Implementation}
-The developed framework, \textit{DrainFlex PRO}, integrates geospatial processing with a bimodal simulation engine.
+The developed framework integrates geospatial processing with a bimodal simulation engine. We define two primary metrics to quantify system failure:
+\begin{enumerate}
+    \item \textbf{Cascade Depth ($\Lambda$):} The maximum length of the failure chain originating from a primary blockage $v_{source}$, defined as:
+    \begin{equation}
+    \Lambda = \max_{v \in V} d(v_{source}, v)
+    \end{equation}
+    where $d(\cdot)$ denotes the graph distance in the drainage topology.
+    \item \textbf{Failure Velocity ($v_{fail}$):} The rate of new blockage formation over time, $v_{fail} = \Delta E_{blocked} / \Delta t$.
+\end{enumerate}
 
 \subsection{Hydraulic Simulation Core}
 The continuous flow distribution is governed by Manning's equation. To handle the transition between gravity flow and surcharged states, we calculate the discharge capacity $C_{uv}$ dynamically:
@@ -94,20 +103,35 @@ where $S$ is the hydraulic gradient derived from the Digital Elevation Model (DE
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.48\textwidth]{final_system_architecture.png}
-\caption{ DrainFlex PRO System Architecture: Integrating Geospatial Layers, Bimodal Simulation, and Analytical Suite.}
+\caption{System Architecture: Integrating Geospatial Layers, Bimodal Simulation, and Analytical Suite.}
 \label{fig:architecture}
 \end{figure}
 
-\subsection{Formal Rule Specification}
-To ensure methodological rigor, we formalize the 8-rule engine using set-theoretic production notation.
+\subsubsection{Formal Logic of the 8-Rule Engine}
+The simulation's state evolution is governed by eight distinct productions that bridge topological states and hydraulic flux, summarized in Table \ref{tab:grammar_rules}.
 
-\subsubsection{Inflow Rule ($R_1$)}
-To model real-world uncertainty, catchment areas $\mathcal{A}_c$ are treated as Gaussian random variables: $\mathcal{A}_c \sim \mathcal{N}(\mu, \sigma^2)$, with $\mu = 5000m^2$ and $\sigma = 500m^2$. The updated water level $L_v'$ is:
-\begin{equation}
-L_v' = L_v + \int_{t}^{t+\Delta t} I(\tau) \mathcal{A}_c(v) d\tau
-\end{equation}
+\begin{table}[htbp]
+\caption{Formal Graph Grammar Production Rules}
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Rule} & \textbf{LHS Condition} & \textbf{RHS Transformation} \\
+\hline
+$R_1$ & Source Node & Inflow update $L_v + \Delta$ \\
+$R_2$ & Elevation $z_u > z_v$ & Gravity-driven flux $Q_{uv}$ \\
+$R_3$ & $L_v > D_{pipe}$ & Surcharged flow state \\
+$R_4$ & Stress $\int (q-C) > \Theta$ & Pipe status $\to$ 'blocked' \\
+$R_5$ & Hydraulic Gradient $< 0$ & Reverse flux routing \\
+$R_6$ & $L_v > max\_capacity$ & Node status $\to$ 'flooded' \\
+$R_7$ & Downstream Blockage & Upstream back-pressure $\alpha$ \\
+$R_8$ & Inflow $\approx 0$ & Recovery and desilting \\
+\hline
+\end{tabular}
+\label{tab:grammar_rules}
+\end{center}
+\end{table}
 
-\subsubsection{Sequential Blockage Production ($R_{3,4}$)}
+\subsubsection{Discrete Blockage Production ($R_4$)}
 The transformation from an active to a blocked state is a discrete state transition triggered by hydraulic stress duration $\tau$:
 \begin{equation}
 \delta(status(e), t) = 
@@ -116,7 +140,7 @@ The transformation from an active to a blocked state is a discrete state transit
 \text{'active'}, & \text{otherwise}
 \end{cases}
 \end{equation}
-where $\Theta$ is the cumulative stress threshold.
+where $\Theta$ is the cumulative stress threshold ($1.5 \times$ capacity-minutes).
 
 \subsubsection{Back-Pressure Cascade ($R_7$)}
 The physical impact of a downstream blockage on upstream efficiency is modeled via an attenuation coefficient $\alpha_i$:
@@ -131,8 +155,22 @@ The simulation follows an iterative logic as shown in Figure \ref{fig:workflow} 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.48\textwidth]{simulation_workflow_formal.png}
-\caption{ Bimodal Simulation Workflow: Sequential execution of hydraulic flux calculation and graph-grammar state transformations.}
+\caption{ Bimodal Simulation Lifecycle: Sequential execution of hydraulic flux calculation and graph-grammar state transformations.}
 \label{fig:workflow}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.48\textwidth]{grammar_transformation.png}
+\caption{Visual Logic of Graph Grammar productions: (1) Initial hydraulic equilibrium, (2) Transformation to blocked state ($R_4$), and (3) Resultant upstream surcharge cascade ($R_7$).}
+\label{fig:grammar_viz}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.45\textwidth]{rule_logic_flow.png}
+\caption{Rule Logic Interaction: The algorithmic sequence illustrating how hydraulic stress triggers Rule $R_4$, which subsequently invokes $R_7$ through back-pressure propagation.}
+\label{fig:rule_logic}
 \end{figure}
 
 \begin{algorithmic}[1]
@@ -150,17 +188,48 @@ The simulation follows an iterative logic as shown in Figure \ref{fig:workflow} 
 \ENDFOR
 \end{algorithmic}
 
-\section{Case Study: Velachery, Chennai}
+\section{Case Study: Comparative Analysis of Chennai Catchments}
+\subsection{Dataset Construction}
+The topological data for the study areas was extracted from OpenStreetMap (OSM) using the Python library \texttt{OSMnx}. The extraction process targeted features tagged as \texttt{waterway: drain}, \texttt{waterway: ditch}, and \texttt{man\_made: pipeline}. 
+
+Following extraction, the raw geospatial features were processed through a multi-stage pipeline:
+\begin{enumerate}
+    \item \textbf{Topology Cleaning:} Consolidating adjacent nodes within a 5-meter radius to eliminate fragmentation.
+    \item \textbf{Directionality Assignment:} Edge directions were inferred from the Digital Elevation Model (DEM) data, ensuring all pipelines follow the gravity-driven hydraulic gradient.
+    \item \textbf{DEM Integration:} Node elevations $z_i$ were sampled from NASA SRTM (30m resolution) data and interpolated for intermediate junctions.
+    \item \textbf{Attribute Mapping:} Uniform Manning's $n$ coefficients were assigned based on Material Standard ISO-standards for concrete conduits.
+\end{enumerate}
+
 \subsection{Geospatial Context and Hydrological Stress}
-Velachery, located in Southern Chennai, serves as a high-density urban catchment with a precarious drainage situation. The region is characterized by a low-lying topography ($Z \in [2, 5]$ meters above MSL) that drains into the Pallikaranai marshlands. Due to rapid urbanization, the runoff coefficient is estimated at 0.85, leading to rapid hydrograph peaking during monsoon events. Our study area extracted from OpenStreetMap comprises 23 primary nodes and 28 circular pipes ranging from 600mm to 1200mm in diameter.
+Two distinct urban catchments in Chennai were analyzed to validate the framework's scalability: (i) \textbf{Velachery}, a high-density depression zone, and (ii) \textbf{Adyar Riverfront}, a riparian corridor with complex secondary drainage. 
+
+\begin{table}[htbp]
+\caption{Topological Characteristics of Study Areas}
+\begin{center}
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+\textbf{Metric} & \textbf{Velachery} & \textbf{Adyar} & \textbf{Mylapore} & \textbf{T. Nagar} & \textbf{Unit} \\
+\hline
+Node Count ($|V|$) & 23 & 52 & 4 & 18 & - \\
+Edge Count ($|E|$) & 28 & 64 & 6 & 22 & - \\
+Avg. Elevation & 9.8 & 6.4 & 10.2 & 8.5 & meters \\
+Network Density & 1.21 & 1.23 & 1.50 & 1.22 & $E/V$ \\
+\hline
+\end{tabular}
+}
+\label{tab_catchments}
+\end{center}
+\end{table}
+Velachery (depression-zone) and Adyar (riverfront corridor) serve as the primary benchmark catchments. The Mylapore drainage segment represents a small heritage sub-network used as a micro-scale structural comparison to evaluate rules in high-density legacy infrastructure.
 
 \subsection{Experimental Setup}
-We utilized a multi-scenario simulation representing three distinct rainfall hydrographs:
-\begin{enumerate}
-    \item \textbf{Scenario A (Steady State):} Constant 50mm/hr rainfall for 100 steps to establish a hydraulic baseline.
-    \item \textbf{Scenario B (Periodic Pulse):} 120mm/hr bursts at $t \in \{20, 50, 80\}$ to test Rule 3 (Blockage) sensitivity.
-    \item \textbf{Scenario C (Extreme Overload):} Sustained 150mm/hr rainfall to identify the system-wide collapse threshold.
-\end{enumerate}
+We utilized a bimodal simulation suite representing three distinct rainfall hydrographs:
+\begin{itemize}
+    \item \textbf{Scenario A (Baseline):} 20 mm/hr steady-state precipitation for establishment of hydraulic equilibrium.
+    \item \textbf{Scenario B (Monsoon Surge):} 100 mm/hr periodic bursts to stimulate structural blockage rules.
+    \item \textbf{Scenario C (Catastrophic Storm):} 150 mm/hr sustained intensity to observe system-wide phase transitions.
+\end{itemize}
 
 \section{Analysis and Results}
 \subsection{Resilience Threshold and Phase Transition}
@@ -173,10 +242,24 @@ We defined formal system resilience $R$ as $1 - (N_{flood}/N_{total})$. Using a 
 \label{fig:resilience}
 \end{figure}
 
-Beyond this threshold, the system enters a phase transition where network-wide inundation propagates catastrophically, reducing resilience to below 0.3 within 50 time steps.
+Beyond this threshold, the system enters a phase transition where network-wide inundation propagates catastrophically, reducing resilience to below 0.3 within 50 time steps. This relationship is further elucidated by the growth of topological complexity as a function of rainfall intensity (Figure \ref{fig:cascade_intensity}).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.45\textwidth]{plot10_cascade_intensity.png}
+\caption{ Mean Cascade Depth ($\Lambda$) vs. Rainfall Intensity: Demonstrating the non-linear growth of failure propagation complexity ($\mu \pm \sigma$) across 10 Monte Carlo iterations.}
+\label{fig:cascade_intensity}
+\end{figure}
 
 \subsection{Failure Propagation Velocity ($v_{fail}$)}
-We introduce a new temporal metric, $v_{fail}$, defined as the number of new blockages formed per time step following a primary failure. In Scenario C, we observed a peak $v_{fail}$ of 0.4 pipes/step, indicating that for every 10 minutes of extreme rainfall, 4 additional pipes entered a blocked state due to the cascading back-pressure (Rule 7). This metric provides a quantifiable measure of the "speed" of infrastructure failure.
+We introduce a new temporal metric, $v_{fail}$, defined as the number of new blockages formed per time step following a primary failure. In Scenario C, we observed a peak $v_{fail}$ of 0.4 pipes/step, indicating that for every 10 minutes of extreme rainfall, 4 additional pipes entered a blocked state due to the cascading back-pressure (Rule 7). This metric provides a quantifiable measure of the "speed" of infrastructure failure. The sensitivity of this velocity to storm intensity is shown in Figure \ref{fig:vfail}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.45\textwidth]{plot11_vfail_intensity.png}
+\caption{ Failure Velocity ($v_{fail}$) vs. Rainfall Intensity: Demonstrating the acceleration of topological failure as hydraulic stress surpasses critical pipe thresholds.}
+\label{fig:vfail}
+\end{figure}
 
 \subsection{Node Criticality and Impact Ranking}
 A "Leave-One-Out" stochastic experiment was conducted to identify the most vulnerable points in the Velachery network. By systematically blocking each node's outflow and measuring the resultant inundation, we identified the Top 5 high-impact nodes (Table II).
@@ -184,6 +267,7 @@ A "Leave-One-Out" stochastic experiment was conducted to identify the most vulne
 \begin{table}[htbp]
 \caption{Top 5 High-Impact Drainage Nodes (Velachery Study)}
 \begin{center}
+\resizebox{\columnwidth}{!}{
 \begin{tabular}{|c|c|c|c|}
 \hline
 \textbf{Rank} & \textbf{Coordinates (Lat, Lon)} & \textbf{Impact Score ($I$)} & \textbf{Inundation \%} \\
@@ -195,19 +279,27 @@ A "Leave-One-Out" stochastic experiment was conducted to identify the most vulne
 5 & 80.2095, 12.9875 & 0.28 & 28\% \\
 \hline
 \end{tabular}
+}
 \label{tab2}
 \end{center}
 \end{table}
 
 \subsection{Methodology Comparison (Baseline vs. Proposed)}
-To validate our framework, we compared its predictive accuracy against a "Uniform Flow" baseline (Figure \ref{fig:baseline}). The baseline model misses 40\% of flood events because it fails to account for structural transformations like pipe blockages and the resultant hydrograph rerouting.
+To validate our framework, we compared its predictive accuracy against a "Uniform Flow Baseline." This baseline assumes a steady-state hydraulic equilibrium where flux is a constant function of inflow:
+\begin{equation}
+Q_{uv}(t) = \text{const} \cdot I(t)
+\end{equation}
+Crucially, the baseline model misses structural transformations ($\Psi(e).status = \text{const}$) like pipe blockages and the resultant hydrograph rerouting. Consequently, the baseline misses 40\% of flood events because it fails to account for topological dynamic rewrites (Figure \ref{fig:baseline}).
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.45\textwidth]{plot9_baseline_comparison.png}
-\caption{ Methodology Comparison: Performance of the Proposed Graph Grammar Engine vs. Uniform Flow Baseline.}
+\caption{ Methodology Comparison: Performance of the Proposed Graph Grammar Engine vs. Uniform Flow Baseline. The proposed model detects 42\% more failure events by modeling structural dynamics.}
 \label{fig:baseline}
 \end{figure}
+
+\subsection{Cross-Catchment Resilience Comparison}
+Comparative analysis shows that Adyar exhibit the highest resilience ($R=0.60$) under extreme storm scenarios, attributed to its high outlet redundancy feeding the riverine corridor. Conversely, Velachery ($R=0.45$) and Mylapore ($R=0.50$) show significantly lower integrity due to their localized depressions and restricted outflow points. T. Nagar ($R=0.55$) occupies a middle ground, where high network density provides some redundancy despite high inflow volumes. These results validate the hypothesis that "Cascade Depth" ($\Lambda$) is inversely proportional to outlet density.
 
 \section{Methodological Assumptions and Limitations}
 While the proposed Graph Grammar framework offers a significant advancement in bimodal simulation, certain systemic limitations and assumptions must be acknowledged to contextualize the results.

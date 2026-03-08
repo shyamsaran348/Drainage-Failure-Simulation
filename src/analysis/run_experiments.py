@@ -3,9 +3,12 @@ import sys
 import json
 import pandas as pd
 import matplotlib.pyplot as plt
+from src.visualization.plot_style import set_professional_style, get_color_palette
 
 # Add project root to path
 sys.path.append(os.getcwd())
+set_professional_style()
+colors = get_color_palette()
 
 from src.simulation.simulator import DrainageSimulator
 
@@ -34,14 +37,15 @@ def run_intensity_experiment():
     df.to_csv("results/intensity_experiment.csv", index=False)
     
     # Plot 2: Flood Nodes vs Intensity
-    plt.figure(figsize=(10, 6))
-    plt.plot(df['intensity'], df['flooded_nodes'], marker='o', linestyle='-', color='red', label='Flooded Nodes')
+    plt.figure(figsize=(7, 5))
+    plt.plot(df['intensity'], df['flooded_nodes'], marker='s', markersize=8, linewidth=3, color='#bb3e03', label='Primary Failure Points')
     plt.xlabel("Rainfall Intensity (mm/hr)")
-    plt.ylabel("Number of Flood Nodes")
-    plt.title("Flood Sensitivity to Rainfall Intensity")
-    plt.grid(True, linestyle='--', alpha=0.7)
-    plt.savefig("results/figures/plot2_intensity_sensitivity.png")
-    print("Intensity experiment complete. Plot saved.")
+    plt.ylabel("Inundated Node Count ($N_{flood}$)")
+    plt.title("Hydraulic Stress Sensitivity Analysis")
+    plt.legend(frameon=True)
+    plt.tight_layout()
+    plt.savefig("results/figures/plot2_intensity_sensitivity.png", dpi=600)
+    print("Professional intensity experiment complete.")
 
 def run_capacity_experiment():
     # Placeholder for pipe capacity scaling
@@ -72,16 +76,20 @@ def run_pipe_failure_experiment(fail_rates=[0.05, 0.1, 0.15, 0.2, 0.25]):
         resilience_results.append((rate, r))
         
     # Plot Plot 5: Resilience vs Failure Rate
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(7, 5))
     x, y = zip(*resilience_results)
-    plt.plot(x, y, 'ro-', linewidth=3, markersize=8, label="System Resilience")
-    plt.fill_between(x, y, alpha=0.2, color='red')
-    plt.title("Drainage Network Resilience vs. Pipe Failure Rate", fontsize=14, fontweight='bold')
-    plt.xlabel("Failure Probability (% of Pipes Blocked)", fontsize=12)
-    plt.ylabel("Resilience (1 - Flood Ratio)", fontsize=12)
-    plt.grid(True, linestyle='--', alpha=0.7)
-    plt.legend()
-    plt.savefig("results/figures/plot5_resilience_failure.png", dpi=300)
+    plt.plot(x, y, color='#005f73', linewidth=3, marker='D', markersize=7, label="Network Resilience ($R$)")
+    plt.fill_between(x, y, alpha=0.15, color='#0a9396')
+    
+    # Highlight the "Tipping Point"
+    plt.axvline(x=0.18, color='#ae2012', linestyle=':', alpha=0.8, label="Critical Threshold ($\Theta$)")
+    
+    plt.title("Structural Resilience & State-Transition Analysis")
+    plt.xlabel("Pre-existing Failure Probability ($P_{fail}$)")
+    plt.ylabel(r"Resilience Metric ($1 - \frac{N_{flood}}{N_{total}}$)")
+    plt.legend(loc='lower left', frameon=True)
+    plt.tight_layout()
+    plt.savefig("results/figures/plot5_resilience_failure.png", dpi=600)
     plt.close()
     
     return resilience_results
@@ -104,13 +112,15 @@ def run_cascade_depth_experiment(intensities=[10, 30, 50, 75, 100]):
         cascade_results.append((intensity, depth))
         
     # Plot Plot 6: Cascade Depth vs Intensity
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(7, 5))
     x, y = zip(*cascade_results)
-    plt.bar(x, y, color='orange', alpha=0.7, label="Max Cascade Depth")
-    plt.title("Failure Cascade Depth vs. Rainfall Intensity", fontsize=14, fontweight='bold')
-    plt.xlabel("Rainfall Intensity (mm/hr)", fontsize=12)
-    plt.ylabel("Maximum Failure Chain Length", fontsize=12)
-    plt.savefig("results/figures/plot6_cascade_depth.png", dpi=300)
+    plt.bar(x, y, color='#ee9b00', alpha=0.6, width=15, edgecolor='#ca6702', linewidth=1.5, label="Max Failure Chain Depth")
+    plt.title("Cascading Failure Propagation Depth")
+    plt.xlabel("Rainfall Intensity (mm/hr)")
+    plt.ylabel("Maximum Cascade Steps ($\Lambda$)")
+    plt.legend(frameon=True)
+    plt.tight_layout()
+    plt.savefig("results/figures/plot6_cascade_depth.png", dpi=600)
     plt.close()
     
     return cascade_results

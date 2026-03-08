@@ -1,0 +1,929 @@
+[
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.024519869275431976,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 0,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.023415135927887243,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 0,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.03197454704219005,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 1,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.040111764305621474,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 2,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.056145307394334876,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 3,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.0733906225903132,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 4,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.08738340328397233,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 5,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.10479468374393704,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 6,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.11800151762381447,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 7,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.15455989516150428,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 8,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.16960690326519035,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 9,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.1903363886827406,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 10,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.21460759160034684,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 11,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.24007776898003846,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 12,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.24679423080397186,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 13,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.27523099713965926,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 14,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.2907337159125718,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 15,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.3243869016913733,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 16,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.3271710240745939,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 17,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.3513905761015732,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 18,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.3652594462287034,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 19,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.3818718882430738,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 20,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.3833218421615117,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 21,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.3968412532966223,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 22,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.40334954907250675,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 23,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.4105943572244514,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 24,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.4098172521989377,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 25,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.40133017694822665,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 26,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.4116494477592612,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 27,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.41123332186923345,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 28,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.411428562559106,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 29,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 0,
+    "total_flow": 0.4060718536123236,
+    "cascade_depth": 0,
+    "resilience": 1.0,
+    "time": 30,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 1,
+    "total_flow": 0.41727667526186346,
+    "cascade_depth": 0,
+    "resilience": 0.9565217391304348,
+    "time": 31,
+    "logs": [
+      "Applied OverflowRule to node 80.223041,12.970892"
+    ]
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 2,
+    "total_flow": 0.41279761931090253,
+    "cascade_depth": 0,
+    "resilience": 0.9130434782608696,
+    "time": 32,
+    "logs": [
+      "Applied OverflowRule to node 80.216934,12.995015"
+    ]
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 2,
+    "total_flow": 0.4214837367753922,
+    "cascade_depth": 0,
+    "resilience": 0.9130434782608696,
+    "time": 33,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 2,
+    "total_flow": 0.41170540852321763,
+    "cascade_depth": 0,
+    "resilience": 0.9130434782608696,
+    "time": 34,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 2,
+    "total_flow": 0.4026699958907849,
+    "cascade_depth": 0,
+    "resilience": 0.9130434782608696,
+    "time": 35,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 4,
+    "total_flow": 0.4013047511919371,
+    "cascade_depth": 0,
+    "resilience": 0.8260869565217391,
+    "time": 36,
+    "logs": [
+      "Applied OverflowRule to node 80.218406,12.986995",
+      "Applied OverflowRule to node 80.214930,12.988019"
+    ]
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 7,
+    "total_flow": 0.39165296432992913,
+    "cascade_depth": 0,
+    "resilience": 0.6956521739130435,
+    "time": 37,
+    "logs": [
+      "Applied OverflowRule to node 80.222517,12.984873",
+      "Applied OverflowRule to node 80.204978,12.988380",
+      "Applied OverflowRule to node 80.222520,12.970858"
+    ]
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 7,
+    "total_flow": 0.3867211479609432,
+    "cascade_depth": 0,
+    "resilience": 0.6956521739130435,
+    "time": 38,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 7,
+    "total_flow": 0.38980998245159887,
+    "cascade_depth": 0,
+    "resilience": 0.6956521739130435,
+    "time": 39,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 7,
+    "total_flow": 0.39125028570073234,
+    "cascade_depth": 0,
+    "resilience": 0.6956521739130435,
+    "time": 40,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 9,
+    "total_flow": 0.3844280835530237,
+    "cascade_depth": 0,
+    "resilience": 0.6086956521739131,
+    "time": 41,
+    "logs": [
+      "Applied OverflowRule to node 80.223409,12.974920",
+      "Applied OverflowRule to node 80.215923,12.964137"
+    ]
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 9,
+    "total_flow": 0.3764914254596848,
+    "cascade_depth": 0,
+    "resilience": 0.6086956521739131,
+    "time": 42,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 9,
+    "total_flow": 0.37159936878081196,
+    "cascade_depth": 0,
+    "resilience": 0.6086956521739131,
+    "time": 43,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 10,
+    "total_flow": 0.3686330723612228,
+    "cascade_depth": 0,
+    "resilience": 0.5652173913043479,
+    "time": 44,
+    "logs": [
+      "Applied OverflowRule to node 80.217572,12.968316"
+    ]
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 10,
+    "total_flow": 0.36578524173840266,
+    "cascade_depth": 0,
+    "resilience": 0.5652173913043479,
+    "time": 45,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 10,
+    "total_flow": 0.3627959079803574,
+    "cascade_depth": 0,
+    "resilience": 0.5652173913043479,
+    "time": 46,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.36185295744932044,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 47,
+    "logs": [
+      "Applied OverflowRule to node 80.218118,12.980923"
+    ]
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.3575827006683462,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 48,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.3561500569744556,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 49,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.3549147270792667,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 50,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.35248821379240475,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 51,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.35000766868083893,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 52,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.3494841039628882,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 53,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.34759697695492264,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 54,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.2616956182310428,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 55,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.22508861078010137,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 56,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.22307347269560238,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 57,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.22122920370836416,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 58,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.21986448463956695,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 59,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.21893249918101043,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 60,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.21648938372816984,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 61,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.21648938372816984,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 62,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.21648938372816984,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 63,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.21648938372816984,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 64,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.21648938372816984,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 65,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.21648938372816984,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 66,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.21648938372816984,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 67,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.21648938372816984,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 68,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.21648938372816984,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 69,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.21648938372816984,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 70,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.21648938372816984,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 71,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.21648938372816984,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 72,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.21648938372816984,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 73,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.21648938372816984,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 74,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.21648938372816984,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 75,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.21648938372816984,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 76,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.21648938372816984,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 77,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.21648938372816984,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 78,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.21648938372816984,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 79,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.20380026711755528,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 80,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.16583098216171333,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 81,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.16583098216171333,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 82,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.16583098216171333,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 83,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.16583098216171333,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 84,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.16583098216171333,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 85,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.16583098216171333,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 86,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.16583098216171333,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 87,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.16583098216171333,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 88,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.16583098216171333,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 89,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.16583098216171333,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 90,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.16583098216171333,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 91,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.16583098216171333,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 92,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.16583098216171333,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 93,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.16583098216171333,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 94,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.16583098216171333,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 95,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.16583098216171333,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 96,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.16583098216171333,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 97,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.16583098216171333,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 98,
+    "logs": []
+  },
+  {
+    "blocked_pipes": 0,
+    "flooded_nodes": 11,
+    "total_flow": 0.16583098216171333,
+    "cascade_depth": 0,
+    "resilience": 0.5217391304347826,
+    "time": 99,
+    "logs": []
+  }
+]

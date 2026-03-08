@@ -107,7 +107,29 @@ class DrainageSimulator:
         blocked_pipes = sum(1 for _, _, a in self.G.edges(data=True) if a['status'] == 'blocked')
         flooded_nodes = sum(1 for _, a in self.G.nodes(data=True) if a['type'] == 'flood')
         total_flow = sum(a['flow'] for _, _, a in self.G.edges(data=True))
-        return {'blocked_pipes': blocked_pipes, 'flooded_nodes': flooded_nodes, 'total_flow': total_flow}
+        
+        # Calculate Cascade Depth (Formal Metric Lambda)
+        cascade_depth = 0
+        blocked_edges = [(u, v) for u, v, a in self.G.edges(data=True) if a.get('status') == 'blocked']
+        if blocked_edges:
+            fail_graph = nx.DiGraph()
+            fail_graph.add_edges_from(blocked_edges)
+            try:
+                cascade_depth = nx.dag_longest_path_length(fail_graph)
+            except nx.NetworkXUnfeasible:
+                cascade_depth = len(blocked_edges)
+
+        # Calculate Resilience (Ratio)
+        total_nodes = self.G.number_of_nodes()
+        resilience = 1.0 - (flooded_nodes / total_nodes) if total_nodes > 0 else 1.0
+
+        return {
+            'blocked_pipes': blocked_pipes, 
+            'flooded_nodes': flooded_nodes, 
+            'total_flow': total_flow,
+            'cascade_depth': cascade_depth,
+            'resilience': resilience
+        }
 
     def run_simulation(self, steps=60):
         print(f"Starting simulation for {steps} steps...")
