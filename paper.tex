@@ -92,7 +92,8 @@ Q = \frac{1}{n} A R_h^{2/3} S^{1/2}
 where $S$ is the hydraulic gradient derived from the Digital Elevation Model (DEM): $S = (z_{source} - z_{target}) / L$. 
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[width=0.48\textwidth]{results/figures/final_system_architecture.png}}
+\centering
+\includegraphics[width=0.48\textwidth]{final_system_architecture.png}
 \caption{ DrainFlex PRO System Architecture: Integrating Geospatial Layers, Bimodal Simulation, and Analytical Suite.}
 \label{fig:architecture}
 \end{figure}
@@ -128,7 +129,8 @@ where $\alpha_i$ represents the percentage loss due to air-binding and hydraulic
 The simulation follows an iterative logic as shown in Figure \ref{fig:workflow} and the corresponding pseudo-code:
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[width=0.48\textwidth]{results/figures/simulation_workflow_formal.png}}
+\centering
+\includegraphics[width=0.48\textwidth]{simulation_workflow_formal.png}
 \caption{ Bimodal Simulation Workflow: Sequential execution of hydraulic flux calculation and graph-grammar state transformations.}
 \label{fig:workflow}
 \end{figure}
@@ -165,7 +167,8 @@ We utilized a multi-scenario simulation representing three distinct rainfall hyd
 We defined formal system resilience $R$ as $1 - (N_{flood}/N_{total})$. Using a stochastic failure approach, we randomly blocked edges at rates of 5\% to 25\%. The results reveal a non-linear "Tipping Point" at 18\% failure probability, as shown in Figure \ref{fig:resilience}.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[width=0.45\textwidth]{results/figures/plot5_resilience_failure.png}}
+\centering
+\includegraphics[width=0.45\textwidth]{plot5_resilience_failure.png}
 \caption{ System Resilience ($R$) vs. Initial Failure Probability: Identifying the non-linear collapse threshold at 18\%.}
 \label{fig:resilience}
 \end{figure}
@@ -200,7 +203,8 @@ A "Leave-One-Out" stochastic experiment was conducted to identify the most vulne
 To validate our framework, we compared its predictive accuracy against a "Uniform Flow" baseline (Figure \ref{fig:baseline}). The baseline model misses 40\% of flood events because it fails to account for structural transformations like pipe blockages and the resultant hydrograph rerouting.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[width=0.45\textwidth]{results/figures/plot9_baseline_comparison.png}}
+\centering
+\includegraphics[width=0.45\textwidth]{plot9_baseline_comparison.png}
 \caption{ Methodology Comparison: Performance of the Proposed Graph Grammar Engine vs. Uniform Flow Baseline.}
 \label{fig:baseline}
 \end{figure}
