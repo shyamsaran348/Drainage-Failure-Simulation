@@ -91,6 +91,12 @@ Q = \frac{1}{n} A R_h^{2/3} S^{1/2}
 \end{equation}
 where $S$ is the hydraulic gradient derived from the Digital Elevation Model (DEM): $S = (z_{source} - z_{target}) / L$. 
 
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.48\textwidth]{results/figures/final_system_architecture.png}}
+\caption{ DrainFlex PRO System Architecture: Integrating Geospatial Layers, Bimodal Simulation, and Analytical Suite.}
+\label{fig:architecture}
+\end{figure}
+
 \subsection{Formal Rule Specification}
 To ensure methodological rigor, we formalize the 8-rule engine using set-theoretic production notation.
 
@@ -119,7 +125,14 @@ C_{upstream}' = (1 - \alpha_i) \cdot C_{upstream}
 where $\alpha_i$ represents the percentage loss due to air-binding and hydraulic shock propagation.
 
 \subsection{Rule Evolution Algorithm}
-The simulation follows an iterative logic as shown in the following pseudo-code:
+The simulation follows an iterative logic as shown in Figure \ref{fig:workflow} and the corresponding pseudo-code:
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.48\textwidth]{results/figures/simulation_workflow_formal.png}}
+\caption{ Bimodal Simulation Workflow: Sequential execution of hydraulic flux calculation and graph-grammar state transformations.}
+\label{fig:workflow}
+\end{figure}
+
 \begin{algorithmic}[1]
 \STATE \textbf{Initialize} $G(V, E)$ from OSM/DEM data
 \FOR{time step $t = 1$ to $T$}
@@ -149,7 +162,15 @@ We utilized a multi-scenario simulation representing three distinct rainfall hyd
 
 \section{Analysis and Results}
 \subsection{Resilience Threshold and Phase Transition}
-We defined formal system resilience $R$ as $1 - (N_{flood}/N_{total})$. Using a stochastic failure approach, we randomly blocked edges at rates of 5\% to 25\% (Figure 3). The analysis reveals a non-linear "Tipping Point" at 18\% failure probability. Beyond this threshold, the system enters a phase transition where network-wide inundation propagates catastrophically, reducing resilience to below 0.3 within 50 time steps.
+We defined formal system resilience $R$ as $1 - (N_{flood}/N_{total})$. Using a stochastic failure approach, we randomly blocked edges at rates of 5\% to 25\%. The results reveal a non-linear "Tipping Point" at 18\% failure probability, as shown in Figure \ref{fig:resilience}.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.45\textwidth]{results/figures/plot5_resilience_failure.png}}
+\caption{ System Resilience ($R$) vs. Initial Failure Probability: Identifying the non-linear collapse threshold at 18\%.}
+\label{fig:resilience}
+\end{figure}
+
+Beyond this threshold, the system enters a phase transition where network-wide inundation propagates catastrophically, reducing resilience to below 0.3 within 50 time steps.
 
 \subsection{Failure Propagation Velocity ($v_{fail}$)}
 We introduce a new temporal metric, $v_{fail}$, defined as the number of new blockages formed per time step following a primary failure. In Scenario C, we observed a peak $v_{fail}$ of 0.4 pipes/step, indicating that for every 10 minutes of extreme rainfall, 4 additional pipes entered a blocked state due to the cascading back-pressure (Rule 7). This metric provides a quantifiable measure of the "speed" of infrastructure failure.
@@ -176,7 +197,13 @@ A "Leave-One-Out" stochastic experiment was conducted to identify the most vulne
 \end{table}
 
 \subsection{Methodology Comparison (Baseline vs. Proposed)}
-To validate our framework, we compared its predictive accuracy against a "Uniform Flow" baseline. The baseline model misses 40\% of flood events because it fails to account for structural transformations like pipe blockages and the resultant hydrograph rerouting.
+To validate our framework, we compared its predictive accuracy against a "Uniform Flow" baseline (Figure \ref{fig:baseline}). The baseline model misses 40\% of flood events because it fails to account for structural transformations like pipe blockages and the resultant hydrograph rerouting.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.45\textwidth]{results/figures/plot9_baseline_comparison.png}}
+\caption{ Methodology Comparison: Performance of the Proposed Graph Grammar Engine vs. Uniform Flow Baseline.}
+\label{fig:baseline}
+\end{figure}
 
 \section{Methodological Assumptions and Limitations}
 While the proposed Graph Grammar framework offers a significant advancement in bimodal simulation, certain systemic limitations and assumptions must be acknowledged to contextualize the results.
