@@ -105,7 +105,7 @@ The full simulation framework, datasets, and high-resolution figures used in thi
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.48\textwidth]{final_system_architecture.png}
+\includegraphics[width=\columnwidth]{final_system_architecture.png}
 \caption{System Architecture: Integrating Geospatial Layers, Bimodal Simulation, and Analytical Suite.}
 \label{fig:architecture}
 \end{figure}
@@ -157,21 +157,21 @@ The simulation follows an iterative logic as shown in Figure \ref{fig:workflow} 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.48\textwidth]{simulation_workflow_formal.png}
+\includegraphics[width=\columnwidth]{simulation_workflow_formal.png}
 \caption{ Bimodal Simulation Lifecycle: Sequential execution of hydraulic flux calculation and graph-grammar state transformations.}
 \label{fig:workflow}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.48\textwidth]{grammar_transformation.png}
+\includegraphics[width=\columnwidth]{grammar_transformation.png}
 \caption{Visual Logic of Graph Grammar productions: (1) Initial hydraulic equilibrium, (2) Transformation to blocked state ($R_4$), and (3) Resultant upstream surcharge cascade ($R_7$).}
 \label{fig:grammar_viz}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.45\textwidth]{rule_logic_flow.png}
+\includegraphics[width=\columnwidth]{rule_logic_flow.png}
 \caption{Rule Logic Interaction: The algorithmic sequence illustrating how hydraulic stress triggers Rule $R_4$, which subsequently invokes $R_7$ through back-pressure propagation.}
 \label{fig:rule_logic}
 \end{figure}
@@ -240,7 +240,7 @@ We defined formal system resilience $R$ as $1 - (N_{flood}/N_{total})$. Using a 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.45\textwidth]{plot5_resilience_failure.png}
+\includegraphics[width=\columnwidth]{plot5_resilience_failure.png}
 \caption{ System Resilience ($R$) vs. Initial Failure Probability: Identifying the non-linear collapse threshold at 18\%.}
 \label{fig:resilience}
 \end{figure}
@@ -249,14 +249,14 @@ Beyond this threshold, the system enters a phase transition where network-wide i
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.45\textwidth]{plot10_cascade_intensity.png}
+\includegraphics[width=\columnwidth]{plot10_cascade_intensity.png}
 \caption{ Mean Cascade Depth ($\Lambda$) vs. Rainfall Intensity: Demonstrating the non-linear growth of failure propagation complexity ($\mu \pm \sigma$) across 10 Monte Carlo iterations.}
 \label{fig:cascade_intensity}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.45\textwidth]{spatial_failure_propagation.png}
+\includegraphics[width=\columnwidth]{spatial_failure_propagation.png}
 \caption{ Spatial Failure Propagation (Velachery): Geographical distribution of blocked pipes (red) and triggered flooded nodes (blue) during Scenario C simulation.}
 \label{fig:spatial_map}
 \end{figure}
@@ -266,7 +266,7 @@ We introduce a new temporal metric, $v_{fail}$, defined as the number of new blo
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.45\textwidth]{plot11_vfail_intensity.png}
+\includegraphics[width=\columnwidth]{plot11_vfail_intensity.png}
 \caption{ Failure Velocity ($v_{fail}$) vs. Rainfall Intensity: Demonstrating the acceleration of topological failure as hydraulic stress surpasses critical pipe thresholds.}
 \label{fig:vfail}
 \end{figure}
@@ -303,7 +303,7 @@ Crucially, the baseline model misses structural transformations ($\Psi(e).status
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.45\textwidth]{plot9_baseline_comparison.png}
+\includegraphics[width=\columnwidth]{plot9_baseline_comparison.png}
 \caption{ Methodology Comparison: Performance of the Proposed Graph Grammar Engine vs. Uniform Flow Baseline. The proposed model detects 42\% more failure events by modeling structural dynamics.}
 \label{fig:baseline}
 \end{figure}
